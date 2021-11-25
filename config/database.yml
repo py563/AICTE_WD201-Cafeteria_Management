@@ -22,8 +22,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: myapp_psql_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: myapp_psql_production
+  username: myapp_psql
+  password: <%= ENV['MYAPP_PSQL_DATABASE_PASSWORD'] %>
