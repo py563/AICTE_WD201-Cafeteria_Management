@@ -1,16 +1,114 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CafeteriaManagement</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Dine Restaurant</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <% # Google fonts %>
+    <% # Nav bar %>
+    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Cedarville+Cursive|Sacramento&display=swap" %>
+    <% # Welcome block %>
+    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" %>
+
+
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-content">
+      <header id="main-header">
+	  	  <div class="container navbar">
+          <div class="left-part">
+            <%= link_to "/" do %>
+              <h1 class="navbar-title"> <i class="fa fa-cutlery brand-icon" aria-hidden="true"></i>Dine</h1>
+            <% end %>
+          </div>
+          <div class="right-part">
+            <p class="quote">Experience the flavour</p>
+	  		    <div class="tags">
+              <%= link_to "/" do %>
+                <p class="tag"> <i class="fa fa-home"></i> Home </p>
+              <% end %>
+              <% if @current_user %>
+                <%= link_to carts_path do %>
+                  <p class="tag"> <i class="fa fa-shopping-cart tag-fa" aria-hidden="true"></i> Cart </p>
+                <% end %>
+                <%= link_to orders_path do %>
+                  <p class="tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Orders </p>
+                <% end %>
+                <div class="drop-down-tags-menu">
+                  <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
+                  <div class="drop-down-tags">
+                    <%= link_to "/users/#{@current_user.id}" do %>
+                      <p class="drop-down-tag"> <i class="fa fa-id-card tag-fa" aria-hidden="true"></i> Profile </p>
+                    <% end %>
+                    <% if @current_user.role == "owner" %>
+                      <%= link_to users_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-users tag-fa" aria-hidden="true"></i> Users </p>
+                      <% end %>
+                      <%= link_to change_menus_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Change Menu </p>
+                      <% end %>
+                      <%= link_to categories_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> Categories </p>
+                      <% end %>
+                      <%= link_to reports_path do %>
+                        <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> Reports </p>
+                      <% end %>
+                    <% end %>
+                    <% if @current_user.role != "customer" %>
+                      <%= link_to "/CafeAddressShow" do %>
+                        <p class="drop-down-tag"> <i class="fa fa-map-marker tag-fa" aria-hidden="true"></i> Cafe Address </p>
+                      <% end %>
+                      <%= link_to "/SocialMediaHandlesShow" do %>
+                        <p class="drop-down-tag"> <i class="fa fa-thumb-tack tag-fa" aria-hidden="true"></i> Social Media </p>
+                      <% end %>
+                    <% end %>
+                    <%= link_to "/signout", method: "delete" do %>
+                      <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> SignOut </p>
+                    <% end %>
+                  </div>
+                </div>
+              <% else %>
+                <%= link_to "#welcome-block" do %>
+                  <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> About </p>
+                <% end %>
+                <%= link_to "#footer" do %>
+                  <p class="tag"> <i class="fa fa-phone tag-fa" aria-hidden="true"></i> Contact </p>
+                <% end %>
+                <% if @signUpFlag %>
+                  <%= link_to new_session_path do %>
+                    <p class="tag"> <i class="fa fa-sign-in tag-fa" aria-hidden="true"></i> SignIn </p>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_user_path do %>
+                    <p class="tag"> <i class="fa fa-user-plus tag-fa" aria-hidden="true"></i> SignUp </p>
+                  <% end %>
+                <% end %>
+              <% end %>
+	  		    </div>
+          </div>
+	  	  </div>
+	    </header>
+
+      <% if flash[:error] %>
+        <p class = "flash flash-error">
+          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= flash[:error] %>
+        </p>
+      <% end %>
+      <% if flash[:notice] %>
+        <p class = "flash flash-notice">
+          <i class="fa fa-check" aria-hidden="true"></i> <%= flash[:notice] %>
+        </p>
+      <% end %>
+
+      <%= yield %>
+
+    </div>
+    <footer>
+      <p> @PY563 </p>
+    </footer>
   </body>
 </html>

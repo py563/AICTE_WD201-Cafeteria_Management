@@ -1,0 +1,19 @@
+<div class="signin-signup-block">
+  <div class="form-content">
+    <%= render partial: "home/signin-signup", locals: { signUpFlag: @signUpFlag } %>
+  </div>
+</div>
+
+<section  id="welcome-block">
+  <div class="container">
+    <div class="welcome-block-row">
+      <%= image_tag("left-image.jpg", class: "left-image",alt: "left-image") %>
+      <div class="text-center">
+        <h1 class="text-center-title">ART OF FOOD</h1>
+        <span class="welcome">Welcome to Dine</span>
+        <p class="desciption">Dine is  a team work of  Dine Restaurant Cafe, we aim at promoting the foodstuff industry through the branches , we establish and through the new dishes and integrate between different cultures.</p>
+      </div>
+      <%= image_tag("right-image.jpg", class: "right-image",alt: "left-image") %>
+    </div>
+  </div>
+</section>
