@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dine Restaurant</title>
+    <title>Casa Blanca</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,9 +9,8 @@
     <% # Nav bar %>
     <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css?family=Cedarville+Cursive|Sacramento&display=swap" %>
     <% # Welcome block %>
-    <%= stylesheet_link_tag "application", "https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" %>
-
-
+    <%= stylesheet_link_tag "application",
+                            "https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" %>
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
   </head>
@@ -22,55 +21,41 @@
 	  	  <div class="container navbar">
           <div class="left-part">
             <%= link_to "/" do %>
-              <h1 class="navbar-title"> <i class="fa fa-cutlery brand-icon" aria-hidden="true"></i>Dine</h1>
+              <h1 class="navbar-title">Cafe Blanca</h1>
             <% end %>
           </div>
           <div class="right-part">
-            <p class="quote">Experience the flavour</p>
-	  		    <div class="tags">
+            <div class="tags">
               <%= link_to "/" do %>
-                <p class="tag"> <i class="fa fa-home"></i> Home </p>
+                <p class="tag">Home</p>
               <% end %>
               <% if @current_user %>
                 <%= link_to carts_path do %>
-                  <p class="tag"> <i class="fa fa-shopping-cart tag-fa" aria-hidden="true"></i> Cart </p>
+                  <p class="tag">Cart</p>
                 <% end %>
                 <%= link_to orders_path do %>
-                  <p class="tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Orders </p>
+                  <p class="tag">Orders</p>
                 <% end %>
-                <div class="drop-down-tags-menu">
-                  <i class="fa fa-chevron-down drop-down-arrow tag" aria-hidden="true"></i>
-                  <div class="drop-down-tags">
-                    <%= link_to "/users/#{@current_user.id}" do %>
-                      <p class="drop-down-tag"> <i class="fa fa-id-card tag-fa" aria-hidden="true"></i> Profile </p>
-                    <% end %>
-                    <% if @current_user.role == "owner" %>
-                      <%= link_to users_path do %>
-                        <p class="drop-down-tag"> <i class="fa fa-users tag-fa" aria-hidden="true"></i> Users </p>
-                      <% end %>
-                      <%= link_to change_menus_path do %>
-                        <p class="drop-down-tag"> <i class="fa fa-files-o tag-fa" aria-hidden="true"></i> Change Menu </p>
-                      <% end %>
-                      <%= link_to categories_path do %>
-                        <p class="drop-down-tag"> <i class="fa fa-list tag-fa" aria-hidden="true"></i> Categories </p>
-                      <% end %>
-                      <%= link_to reports_path do %>
-                        <p class="drop-down-tag"> <i class="fa fa-clone tag-fa" aria-hidden="true"></i> Reports </p>
-                      <% end %>
-                    <% end %>
-                    <% if @current_user.role != "customer" %>
-                      <%= link_to "/CafeAddressShow" do %>
-                        <p class="drop-down-tag"> <i class="fa fa-map-marker tag-fa" aria-hidden="true"></i> Cafe Address </p>
-                      <% end %>
-                      <%= link_to "/SocialMediaHandlesShow" do %>
-                        <p class="drop-down-tag"> <i class="fa fa-thumb-tack tag-fa" aria-hidden="true"></i> Social Media </p>
-                      <% end %>
-                    <% end %>
-                    <%= link_to "/signout", method: "delete" do %>
-                      <p class="drop-down-tag"> <i class="fa fa-sign-out tag-fa" aria-hidden="true"></i> SignOut </p>
-                    <% end %>
-                  </div>
-                </div>
+                <%= link_to "/users/#{@current_user.id}" do %>
+                  <p class="tag">Profile</p>
+                <% end %>
+                <% if @current_user.role == "owner" %>
+                  <%= link_to users_path do %>
+                    <p class="tag">Users</p>
+                  <% end %>
+                  <%= link_to change_menus_path do %>
+                    <p class="tag">Change Menu</p>
+                  <% end %>
+                  <%= link_to categories_path do %>
+                    <p class="tag">Categories</p>
+                  <% end %>
+                  <%= link_to reports_path do %>
+                    <p class="tag">Reports</p>
+                  <% end %>
+                <% end %>
+                <%= link_to "/signout", method: "delete" do %>
+                  <p class="tag">SignOut</p>
+                <% end %>
               <% else %>
                 <%= link_to "#welcome-block" do %>
                   <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> About </p>
@@ -108,7 +93,7 @@
 
     </div>
     <footer>
-      <p> @PY563 </p>
+      <p> Developed by @PY563 for AICTE Lite WD 201 Capstone Project</p>
     </footer>
   </body>
 </html>
