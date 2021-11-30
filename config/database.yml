@@ -12,20 +12,18 @@ default: &default
 
 development:
   <<: *default
-  database: rngbyepy
-  username: rngbyepy
-  password: zJV8pcU42kffMTvR3SlCiWDLdptwCtSP
-  host: chunee.db.elephantsql.com
+  database: ipzzwbjb
+  username: ipzzwbjb
+  password: J_Us-EWg6ySnNByd3cCuc33eexaWkrtB
+  host: castor.db.elephantsql.com
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: myapp_psql_test
+  database: test_saas_db
 
 production:
   <<: *default
-  database: myapp_psql_production
-  username: myapp_psql
-  password: <%= ENV['MYAPP_PSQL_DATABASE_PASSWORD'] %>
+  database: prod_saas_db
