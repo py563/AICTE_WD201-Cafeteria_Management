@@ -22,7 +22,7 @@
     </div>
     <div class = "reports-info">
       <p > Total Orders: <%= orders.count%></p>
-      <p> Total Cash: <i class="fa fa-inr" aria-hidden="true"></i> <%= orders.totalOrdersPrice%></p>
+      <p> Total Cash: ₹<%= orders.totalOrdersPrice%></p>
     </div>
     <table class = "reports-table">
       <tr class = "reports-table__tr">
@@ -43,7 +43,7 @@
               Walk-In-customer(by <%= User.find(order.user_id).name%>)
             <% end %>
           </td>
-          <td> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.price%> </td>
+          <td>₹<%= order.price%></td>
           <td>
             <%= form_with(url: "/reports/#{order.id}", method: "get", local: "true") do %>
               <%= submit_tag("Invoice")%>

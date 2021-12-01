@@ -13,11 +13,11 @@
       <div class="pending-order-items">
         <% order.order_items.each do |order_item| %>
           <div class="pending-order-item">
-            <p class="pending-order-item-name"> <%= order_item.menu_item_name %> </p>
-            <p class="pending-order-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.menu_item_price %> </p>
+            <p class="pending-order-item-name"><%= order_item.menu_item_name %></p>
+            <p class="pending-order-item-price">₹<%= order_item.menu_item_price %></p>
             <p class="pending-order-item-quantity"> <span> x </span> <%= order_item.quantity %> </p>
             <p class="equal-sign"> = </p>
-            <p class="pending-order-item-total"> <i class="fa fa-inr" aria-hidden="true"></i> <%= order_item.total %> </p>
+            <p class="pending-order-item-total">₹<%= order_item.total %></p>
           </div>
         <% end %>
       </div>
@@ -26,8 +26,8 @@
         <p class="pending-order-delivered-date"> <span> Delivered Date: </span> <%= order.delivered_at.strftime("%d/%m/%Y at %I:%M %p") %> </p>
 
       </div>
-      <p class="pending-order-total"> <span> Total Price </span> <i class="fa fa-inr" aria-hidden="true"></i> <%= order.totalPrice %> </p>
-      <p class="text-align-center"> <%= link_to ('<i class="fa fa-file-o order-invoice-button"> Invoice </i>').html_safe, "/reports/#{order.id}" %> </p>
+      <p class="pending-order-total"> <span> Total Price: </span>₹<%= order.totalPrice %></p>
+      <p class="text-align-center"> <%= link_to ('Invoice').html_safe, "/reports/#{order.id}" %> </p>
     </div>
   <% end %>
 </div>

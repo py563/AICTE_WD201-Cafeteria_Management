@@ -58,18 +58,18 @@
                 <% end %>
               <% else %>
                 <%= link_to "#welcome-block" do %>
-                  <p class="tag"> <i class="fa fa-info tag-fa" aria-hidden="true"></i> About </p>
+                  <p class="tag">About</p>
                 <% end %>
                 <%= link_to "#footer" do %>
-                  <p class="tag"> <i class="fa fa-phone tag-fa" aria-hidden="true"></i> Contact </p>
+                  <p class="tag">Contact</p>
                 <% end %>
                 <% if @signUpFlag %>
                   <%= link_to new_session_path do %>
-                    <p class="tag"> <i class="fa fa-sign-in tag-fa" aria-hidden="true"></i> SignIn </p>
+                    <p class="tag">SignIn</p>
                   <% end %>
                 <% else %>
                   <%= link_to new_user_path do %>
-                    <p class="tag"> <i class="fa fa-user-plus tag-fa" aria-hidden="true"></i> SignUp </p>
+                    <p class="tag">SignUp</p>
                   <% end %>
                 <% end %>
               <% end %>
@@ -80,12 +80,12 @@
 
       <% if flash[:error] %>
         <p class = "flash flash-error">
-          <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <%= flash[:error] %>
+          <%= flash[:error] %>
         </p>
       <% end %>
       <% if flash[:notice] %>
         <p class = "flash flash-notice">
-          <i class="fa fa-check" aria-hidden="true"></i> <%= flash[:notice] %>
+          <%= flash[:notice] %>
         </p>
       <% end %>
 

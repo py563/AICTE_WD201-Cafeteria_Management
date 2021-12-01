@@ -1,5 +1,5 @@
 <%= link_to "/orders/cart" do %>
-  <p class="go-to-cart"> <i class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i> Go to Cart </p>
+  <p class="go-to-cart">Go to Cart</p>
 <% end %>
 
 <div class="container">
@@ -11,7 +11,7 @@
           <li class="category-item">
             <p class="menu-item-name"> <%=menu_item.name%> </p>
             <p class="menu-item-description"> <%=menu_item.description%> </p>
-            <p class="menu-item-price"> <i class="fa fa-inr" aria-hidden="true"></i> <%=menu_item.price%> </p>
+            <p class="menu-item-price">₹<%=menu_item.price%></p>
             <% order_item = Order.find(session[:current_order_id]).order_items.find_by(menu_item_id: menu_item.id) %>
             <div class="menu-item-quantity">
               <% if order_item %>

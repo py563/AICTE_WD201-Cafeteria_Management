@@ -12,7 +12,7 @@
           <%= form_with(url: "/categories/#{category.id}", method: "delete") do %>
             <%= image_submit_tag("TrashIcon.png", class: "category-delete") %>
           <% end %>
-          <p class="categories-edit-icon"> <%= link_to ('<i class="fa fa-pencil"></i>').html_safe, "/categories/#{category.id}/edit" %> </p>
+          <p class="categories-edit-icon"> <%= link_to ('✏').html_safe, "/categories/#{category.id}/edit" %> </p>
         </div>
     </div>
   <% end %>
